@@ -1,0 +1,691 @@
+/* ===========================
+   المتغيرات العامة
+   =========================== */
+:root {
+  --gold: #c9a84c;
+  --gold-light: #f0d080;
+  --black: #0a0a0a;
+  --dark: #111;
+  --dark2: #1a1a1a;
+  --dark3: #222;
+  --white: #fff;
+  --gray: #aaa;
+  --font-main: 'Georgia', serif;
+  --font-body: 'Arial', sans-serif;
+  --radius: 10px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.5);
+  --transition: 0.3s ease;
+}
+
+/* ===========================
+   عام - Body والخطوط
+   =========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--dark);
+  color: var(--white);
+  direction: rtl;
+  line-height: 1.7;
+}
+
+/* ===========================
+   الهيدر وشريط التنقل
+   =========================== */
+header {
+  background: var(--black);
+  padding: 15px 30px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--gold);
+}
+
+header h1 {
+  margin: 0 0 12px 0;
+  font-size: 32px;
+  color: var(--gold);
+  font-family: var(--font-main);
+  letter-spacing: 3px;
+}
+
+/* --- شريط التنقل مع Dropdown --- */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  position: relative;
+}
+
+nav a {
+  color: var(--gold);
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background var(--transition), color var(--transition);
+}
+
+nav a:hover {
+  color: var(--black);
+  background: var(--gold);
+}
+
+/* --- القائمة المنسدلة Dropdown --- */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown > a {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--black);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  min-width: 160px;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  margin: 0;
+  color: var(--gold);
+  border-radius: 0;
+  font-size: 15px;
+  text-align: right;
+}
+
+.dropdown-menu a:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* ===========================
+   القسم الرئيسي - Hero
+   =========================== */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 140px 20px;
+  background-image: url('images/PagHom.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--white);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.hero * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h2 {
+  font-size: 52px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: var(--font-main);
+  color: var(--gold);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 15px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===========================
+   الأزرار
+   =========================== */
+.btn {
+  background: var(--gold);
+  padding: 12px 28px;
+  color: var(--black);
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px;
+  font-weight: bold;
+  font-size: 17px;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn:hover {
+  background: var(--white);
+  color: var(--black);
+  transform: translateY(-2px);
+}
+
+.btn-small {
+  background: var(--gold);
+  padding: 10px 20px;
+  color: var(--black);
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background var(--transition);
+  display: inline-block;
+}
+
+.btn-small:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* ===========================
+   قسم Intro - البطاقات
+   =========================== */
+.intro {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px 30px;
+  flex-wrap: wrap;
+}
+
+.intro-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--radius);
+  width: 300px;
+  height: 260px;
+  color: var(--white);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition);
+}
+
+.intro-card:hover {
+  transform: translateY(-5px);
+}
+
+.intro-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.intro-card * {
+  position: relative;
+  z-index: 2;
+}
+
+.intro-card h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--gold);
+}
+
+.intro-card p {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+/* ===========================
+   قسم المنتجات - بطاقات العطر
+   =========================== */
+.products {
+  padding: 50px 30px;
+}
+
+.products h2 {
+  text-align: center;
+  color: var(--gold);
+  font-size: 36px;
+  margin-bottom: 40px;
+  font-family: var(--font-main);
+}
+
+/* فلتر تصفية المنتجات */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+
+.filter-btn {
+  background: var(--dark3);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 8px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background var(--transition), color var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--dark3);
+  border-radius: var(--radius);
+  text-align: center;
+  padding: 20px;
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: var(--shadow);
+  border: 1px solid #333;
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--gold);
+}
+
+.card p {
+  font-size: 17px;
+  margin-bottom: 15px;
+  color: var(--gray);
+}
+
+.card button {
+  background: var(--gold);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background var(--transition);
+  font-size: 15px;
+  margin-top: auto;
+}
+
+.card button:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 30px rgba(201,168,76,0.2);
+}
+
+/* ===========================
+   الجدول - مقارنة العطور
+   =========================== */
+.table-section {
+  padding: 50px 30px;
+  overflow-x: auto;
+}
+
+.table-section h2 {
+  text-align: center;
+  color: var(--gold);
+  font-size: 30px;
+  margin-bottom: 25px;
+  font-family: var(--font-main);
+}
+
+table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: var(--dark3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+th {
+  background: var(--gold);
+  color: var(--black);
+  padding: 14px 18px;
+  font-size: 16px;
+  text-align: center;
+}
+
+td {
+  padding: 12px 18px;
+  text-align: center;
+  font-size: 15px;
+  border-bottom: 1px solid #333;
+  color: var(--gray);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background: rgba(201,168,76,0.08);
+  color: var(--white);
+}
+
+/* ===========================
+   القوائم - UL/OL
+   =========================== */
+.list-section {
+  padding: 40px 30px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.list-section h2 {
+  color: var(--gold);
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-family: var(--font-main);
+}
+
+.list-section ul, .list-section ol {
+  padding-right: 25px;
+  margin-bottom: 20px;
+}
+
+.list-section ul li, .list-section ol li {
+  padding: 6px 0;
+  font-size: 16px;
+  color: var(--gray);
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.list-section ul li::marker {
+  color: var(--gold);
+}
+
+.list-section ol li::marker {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+/* ===========================
+   قسم الوسائط - Media
+   =========================== */
+.media-section {
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.media-section h2 {
+  color: var(--gold);
+  font-size: 30px;
+  margin-bottom: 30px;
+  font-family: var(--font-main);
+}
+
+.media-section h3 {
+  color: var(--gold-light);
+  font-size: 20px;
+  margin: 25px 0 15px 0;
+}
+
+.media-section video,
+.media-section audio {
+  max-width: 600px;
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.media-section iframe {
+  max-width: 700px;
+  width: 100%;
+  height: 400px;
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ===========================
+   صفحة من نحن
+   =========================== */
+.values-list {
+  max-width: 600px;
+  margin: 20px auto 0 auto;
+  text-align: right;
+}
+
+.values-list li {
+  padding: 8px 0;
+  color: var(--gold-light);
+  font-size: 16px;
+}
+
+/* ===========================
+   نموذج الاتصال
+   =========================== */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #1a1a1a;
+  color: var(--white);
+  font-size: 15px;
+  font-family: var(--font-body);
+  transition: border-color var(--transition);
+  direction: rtl;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.contact-form select option {
+  background: #1a1a1a;
+}
+
+.contact-form button {
+  background: var(--gold);
+  color: var(--black);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background var(--transition);
+}
+
+.contact-form button:hover {
+  background: var(--white);
+}
+
+/* ===========================
+   سلة التسوق - عداد
+   =========================== */
+#cart-count {
+  background: var(--gold);
+  color: var(--black);
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+#cart-total {
+  text-align: center;
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+/* ===========================
+   الفوتر
+   =========================== */
+footer {
+  text-align: center;
+  padding: 25px 20px;
+  background: var(--black);
+  margin-top: 60px;
+  font-size: 15px;
+  color: var(--gray);
+  border-top: 1px solid #222;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================
+   CSS Media Queries - تجاوب الشاشات
+   =========================== */
+
+/* شاشات لوحية (Tablet) */
+@media (max-width: 900px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
+
+  .intro-card {
+    width: 260px;
+  }
+
+  .hero h2 {
+    font-size: 38px;
+  }
+}
+
+/* شاشات محمولة (Mobile) */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 24px;
+  }
+
+  nav a {
+    font-size: 14px;
+    margin: 3px 5px;
+  }
+
+  .hero {
+    padding: 80px 15px;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+
+  .intro {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+  }
+
+  .intro-card {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .filter-bar {
+    gap: 8px;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  th, td {
+    padding: 9px 10px;
+  }
+
+  .media-section iframe {
+    height: 220px;
+  }
+
+  .dropdown-menu {
+    right: auto;
+    left: 0;
+  }
+}

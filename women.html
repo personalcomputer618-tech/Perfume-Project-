@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عطور نسائية - Royal Perfume</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ======= الهيدر ======= -->
+<header>
+  <h1>👑 Royal Perfume</h1>
+  <nav>
+    <a href="index.html">الرئيسية</a>
+    <div class="dropdown">
+      <a href="#">العطور ▾</a>
+      <div class="dropdown-menu">
+        <a href="men.html">عطور رجالية</a>
+        <a href="women.html">عطور نسائية</a>
+      </div>
+    </div>
+    <a href="about.html">من نحن</a>
+    <a href="contact.html">تواصل معنا</a>
+    <a href="#">🛒 السلة (<span id="cart-count">0</span>)</a>
+  </nav>
+</header>
+
+<!-- ======= Hero ======= -->
+<section class="hero" style="background-image: url('images/Wmen.jpg'); padding: 100px 20px;">
+  <h2>العطور النسائية</h2>
+  <p>مجموعة ساحرة من أرق العطور النسائية الفاخرة</p>
+</section>
+
+<!-- ======= قسم المنتجات ======= -->
+<section class="products">
+  <h2>تشكيلة العطور النسائية</h2>
+
+  <!-- أزرار التصفية -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">الكل</button>
+    <button class="filter-btn" onclick="filterProducts('floral', this)">زهري</button>
+    <button class="filter-btn" onclick="filterProducts('sweet', this)">حلو</button>
+    <button class="filter-btn" onclick="filterProducts('fresh', this)">منعش</button>
+  </div>
+
+  <div id="cart-total"></div>
+
+  <div class="products-grid">
+
+    <div class="card" data-category="floral">
+      <img src="images/rose.jpg" alt="عطر الورد الفرنسي">
+      <h3>عطر الورد الفرنسي</h3>
+      <p>220 ريال</p>
+      <button onclick="addToCart('عطر الورد الفرنسي', 220)">🛒 إضافة للسلة</button>
+    </div>
+
+    <div class="card" data-category="sweet">
+      <img src="images/vanilla.jpg" alt="عطر الفانيلا الناعمة">
+      <h3>عطر الفانيلا الناعمة</h3>
+      <p>200 ريال</p>
+      <button onclick="addToCart('عطر الفانيلا الناعمة', 200)">🛒 إضافة للسلة</button>
+    </div>
+
+    <div class="card" data-category="floral">
+      <img src="images/jasmine.jpg" alt="عطر الياسمين الرقيق">
+      <h3>عطر الياسمين الرقيق</h3>
+      <p>210 ريال</p>
+      <button onclick="addToCart('عطر الياسمين الرقيق', 210)">🛒 إضافة للسلة</button>
+    </div>
+
+    <div class="card" data-category="fresh">
+      <img src="images/citrus_flower.jpg" alt="عطر الزهور الحمضية">
+      <h3>عطر الزهور الحمضية</h3>
+      <p>190 ريال</p>
+      <button onclick="addToCart('عطر الزهور الحمضية', 190)">🛒 إضافة للسلة</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======= الفوتر ======= -->
+<footer>
+  <p>© 2026 Royal Perfume - جميع الحقوق محفوظة</p>
+</footer>
+
+<!-- ======= JavaScript ======= -->
+<script>
+  let cartCount = 0;
+  let cartTotal = 0;
+
+  function addToCart(name, price) {
+    cartCount++;
+    cartTotal += price;
+    document.getElementById("cart-count").textContent = cartCount;
+    document.getElementById("cart-total").textContent =
+      "🛒 المنتجات: " + cartCount + " | الإجمالي: " + cartTotal + " ريال";
+    alert("✅ تمت إضافة: " + name + "\nالإجمالي: " + cartTotal + " ريال");
+  }
+
+  function filterProducts(category, btn) {
+    const allBtns = document.querySelectorAll('.filter-btn');
+    for (let i = 0; i < allBtns.length; i++) {
+      allBtns[i].classList.remove('active');
+    }
+    btn.classList.add('active');
+
+    const cards = document.querySelectorAll('.card');
+    for (let i = 0; i < cards.length; i++) {
+      if (category === 'all' || cards[i].dataset.category === category) {
+        cards[i].style.display = 'flex';
+      } else {
+        cards[i].style.display = 'none';
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

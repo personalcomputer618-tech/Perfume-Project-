@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عطور رجالية - Royal Perfume</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ======= الهيدر ======= -->
+<header>
+  <h1>👑 Royal Perfume</h1>
+  <nav>
+    <a href="index.html">الرئيسية</a>
+    <div class="dropdown">
+      <a href="#">العطور ▾</a>
+      <div class="dropdown-menu">
+        <a href="men.html">عطور رجالية</a>
+        <a href="women.html">عطور نسائية</a>
+      </div>
+    </div>
+    <a href="about.html">من نحن</a>
+    <a href="contact.html">تواصل معنا</a>
+    <a href="#">🛒 السلة (<span id="cart-count">0</span>)</a>
+  </nav>
+</header>
+
+<!-- ======= Hero ======= -->
+<section class="hero" style="background-image: url('images/Men.jpg'); padding: 100px 20px;">
+  <h2>العطور الرجالية</h2>
+  <p>مجموعة مختارة بعناية من أفخر العطور الرجالية</p>
+</section>
+
+<!-- ======= قسم المنتجات ======= -->
+<section class="products">
+  <h2>تشكيلة العطور الرجالية</h2>
+
+  <!-- أزرار التصفية Filter -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">الكل</button>
+    <button class="filter-btn" onclick="filterProducts('oud', this)">عود</button>
+    <button class="filter-btn" onclick="filterProducts('musk', this)">مسك</button>
+    <button class="filter-btn" onclick="filterProducts('fresh', this)">منعش</button>
+  </div>
+
+  <!-- إجمالي السلة -->
+  <div id="cart-total"></div>
+
+  <!-- شبكة المنتجات -->
+  <div class="products-grid">
+
+    <div class="card" data-category="oud">
+      <img src="images/oud.jpg" alt="عطر العود الملكي">
+      <h3>عطر العود الملكي</h3>
+      <p>250 ريال</p>
+      <button onclick="addToCart('عطر العود الملكي', 250)">🛒 إضافة للسلة</button>
+    </div>
+
+    <div class="card" data-category="musk">
+      <img src="images/musk.jpg" alt="عطر المسك الأسود">
+      <h3>عطر المسك الأسود</h3>
+      <p>200 ريال</p>
+      <button onclick="addToCart('عطر المسك الأسود', 200)">🛒 إضافة للسلة</button>
+    </div>
+
+    <div class="card" data-category="oud">
+      <img src="images/leather.jpg" alt="عطر الجلد الفاخر">
+      <h3>عطر الجلد الفاخر</h3>
+      <p>220 ريال</p>
+      <button onclick="addToCart('عطر الجلد الفاخر', 220)">🛒 إضافة للسلة</button>
+    </div>
+
+    <div class="card" data-category="fresh">
+      <img src="images/citrus.jpg" alt="عطر الحمضيات المنعش">
+      <h3>عطر الحمضيات المنعش</h3>
+      <p>180 ريال</p>
+      <button onclick="addToCart('عطر الحمضيات المنعش', 180)">🛒 إضافة للسلة</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======= الفوتر ======= -->
+<footer>
+  <p>© 2026 Royal Perfume - جميع الحقوق محفوظة</p>
+</footer>
+
+<!-- ======= JavaScript ======= -->
+<script>
+  // --- المتغيرات ---
+  let cartCount = 0;
+  let cartTotal = 0;
+
+  // --- إضافة للسلة مع عمليات حسابية ---
+  function addToCart(name, price) {
+    cartCount++;
+    cartTotal += price;  // عملية حسابية
+
+    // تحديث العداد
+    document.getElementById("cart-count").textContent = cartCount;
+
+    // عرض الإجمالي
+    document.getElementById("cart-total").textContent =
+      "🛒 المنتجات: " + cartCount + " | الإجمالي: " + cartTotal + " ريال";
+
+    alert("✅ تمت إضافة: " + name + "\nالإجمالي: " + cartTotal + " ريال");
+  }
+
+  // --- تصفية المنتجات بحلقة for ---
+  function filterProducts(category, btn) {
+    // تفعيل الزر المختار
+    const allBtns = document.querySelectorAll('.filter-btn');
+    for (let i = 0; i < allBtns.length; i++) {
+      allBtns[i].classList.remove('active');
+    }
+    btn.classList.add('active');
+
+    // إظهار وإخفاء البطاقات بشرط if-else
+    const cards = document.querySelectorAll('.card');
+    for (let i = 0; i < cards.length; i++) {
+      if (category === 'all') {
+        cards[i].style.display = 'flex';
+      } else if (cards[i].dataset.category === category) {
+        cards[i].style.display = 'flex';
+      } else {
+        cards[i].style.display = 'none';
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

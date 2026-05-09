@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تواصل معنا - Royal Perfume</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ======= الهيدر ======= -->
+<header>
+  <h1>👑 Royal Perfume</h1>
+  <nav>
+    <a href="index.html">الرئيسية</a>
+    <div class="dropdown">
+      <a href="#">العطور ▾</a>
+      <div class="dropdown-menu">
+        <a href="men.html">عطور رجالية</a>
+        <a href="women.html">عطور نسائية</a>
+      </div>
+    </div>
+    <a href="about.html">من نحن</a>
+    <a href="contact.html">تواصل معنا</a>
+    <a href="#">🛒 السلة (<span id="cart-count">0</span>)</a>
+  </nav>
+</header>
+
+<!-- ======= Hero ======= -->
+<section class="hero" style="padding: 100px 20px; background-image: url('images/contact_bg.jpg');">
+  <h2>تواصل معنا</h2>
+  <p>يسعدنا استقبال استفساراتكم وملاحظاتكم</p>
+</section>
+
+<!-- ======= قسم نموذج الاتصال ======= -->
+<section class="intro" style="align-items: flex-start; flex-wrap: wrap;">
+
+  <!-- بطاقة نموذج الاتصال -->
+  <div class="intro-card contact-form" style="background:#1a1a1a; height:auto; padding:30px; width:420px; border: 1px solid #333;">
+    <h3 style="margin-bottom:20px;">📬 نموذج الاتصال</h3>
+
+    <form action="#" method="post" onsubmit="return validateForm()">
+
+      <!-- حقل النص - الاسم -->
+      <input type="text" id="name" name="name" placeholder="الاسم الكامل" required>
+
+      <!-- حقل البريد الإلكتروني -->
+      <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
+
+      <!-- حقل رقم الهاتف -->
+      <input type="tel" id="phone" name="phone" placeholder="رقم الهاتف">
+
+      <!-- قائمة select لاختيار نوع الاستفسار -->
+      <select id="subject" name="subject" required>
+        <option value="" disabled selected>-- نوع الاستفسار --</option>
+        <option value="order">استفسار عن طلب</option>
+        <option value="product">استفسار عن منتج</option>
+        <option value="shipping">الشحن والتوصيل</option>
+        <option value="return">إرجاع واسترداد</option>
+        <option value="other">أخرى</option>
+      </select>
+
+      <!-- تقييم التجربة -->
+      <select id="rating" name="rating">
+        <option value="" disabled selected>-- تقييم تجربتك معنا --</option>
+        <option value="5">⭐⭐⭐⭐⭐ ممتاز</option>
+        <option value="4">⭐⭐⭐⭐ جيد جداً</option>
+        <option value="3">⭐⭐⭐ جيد</option>
+        <option value="2">⭐⭐ مقبول</option>
+        <option value="1">⭐ يحتاج تحسين</option>
+      </select>
+
+      <!-- منطقة النص textarea -->
+      <textarea name="message" id="message" placeholder="اكتب رسالتك هنا..." required rows="5"></textarea>
+
+      <!-- زر الإرسال -->
+      <button type="submit">✉ إرسال الرسالة</button>
+
+    </form>
+
+    <!-- رسالة النجاح -->
+    <div id="success-msg" style="display:none; color:#4caf50; text-align:center; padding:15px; font-size:16px; font-weight:bold;">
+      ✅ تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.
+    </div>
+  </div>
+
+  <!-- بطاقة معلومات التواصل -->
+  <div class="intro-card" style="background-image: url('images/contact_info.jpg'); height:420px; width:300px;">
+    <h3>📞 معلومات التواصل</h3>
+    <p>📞 الهاتف: <br>+966 555 555 555</p>
+    <p>
+      💬 واتساب:
+      <a href="https://wa.me/966555555555" target="_blank" style="color:gold; text-decoration:none;">
+        +966 555 555 555
+      </a>
+    </p>
+    <p>✉ البريد: <br>info@royalperfume.com</p>
+    <p>📍 العنوان: <br>الرياض، المملكة العربية السعودية</p>
+  </div>
+
+</section>
+
+<!-- ======= خريطة Google Maps بـ iframe ======= -->
+<section class="media-section">
+  <h2>📍 موقعنا على الخريطة</h2>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.674754619677!2d46.675296!3d24.713552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQyJzQ4LjgiTiA0NsKwNDAnMzEuMSJF!5e0!3m2!1sar!2ssa!4v1234567890"
+    title="موقع Royal Perfume في الرياض"
+    frameborder="0"
+    allowfullscreen
+    loading="lazy">
+  </iframe>
+</section>
+
+<!-- ======= الفوتر ======= -->
+<footer>
+  <p>© 2026 Royal Perfume - جميع الحقوق محفوظة</p>
+  <p>
+    📞 +966 555 555 555 |
+    ✉ <a href="mailto:info@royalperfume.com">info@royalperfume.com</a>
+  </p>
+</footer>
+
+<!-- ======= JavaScript - التحقق من النموذج ======= -->
+<script>
+  // --- المتغيرات ---
+  const minNameLength = 3;
+  const maxMessageLength = 500;
+
+  // --- دالة التحقق من النموذج ---
+  function validateForm() {
+    const name    = document.getElementById("name").value.trim();
+    const email   = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value.trim();
+
+    // شرط if-else للتحقق من الاسم
+    if (name.length < minNameLength) {
+      alert("⚠️ يجب أن يكون الاسم أكثر من " + minNameLength + " أحرف.");
+      return false;
+    }
+
+    // التحقق من البريد الإلكتروني
+    if (email === "") {
+      alert("⚠️ يرجى إدخال البريد الإلكتروني.");
+      return false;
+    }
+
+    // التحقق من اختيار نوع الاستفسار
+    if (subject === "") {
+      alert("⚠️ يرجى اختيار نوع الاستفسار.");
+      return false;
+    }
+
+    // التحقق من طول الرسالة
+    if (message.length > maxMessageLength) {
+      alert("⚠️ الرسالة طويلة جداً. الحد الأقصى " + maxMessageLength + " حرف.");
+      return false;
+    }
+
+    // حلقة for لعرض ملخص البيانات في الكونسول
+    const fields = ["الاسم: " + name, "البريد: " + email, "الموضوع: " + subject];
+    for (let i = 0; i < fields.length; i++) {
+      console.log("✅ " + fields[i]);
+    }
+
+    // إخفاء النموذج وعرض رسالة النجاح
+    document.querySelector('form').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+
+    return false; // منع الإرسال الفعلي للتجربة
+  }
+</script>
+
+</body>
+</html>
